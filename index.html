@@ -154,24 +154,23 @@ html {
 <script>
   var a=0.1;
   var temp=0.1;
-  var b=setInterval(function(){
+  
+  setInterval(function(){
     $.get("http://jshk.cf/hey/gato.php?"+Date.now(), function(data) {
-      console.log("Data Loaded: " + data);
-      if(data>temp){
+      var num = data*1;
+      console.log("Data Loaded: " + num);
+      if(num>a){
         temp=a;
-        a=data;
+        a=num;
+        var audio = new Audio('levelup.mp3');
+        audio.loop = true;
+        // audio.load();
+        audio.play();
+        move();
       }
-      move();
   });
   },800)
 </script>
-<style type="text/css">
-.bsod{
-    width: 100%;
-    height: 100%;
-    object-fit:cover;
-}
-</style>
 <script type="text/javascript">
 function move() {
   var elem = document.getElementById("myBar");   
@@ -181,14 +180,14 @@ function move() {
   function frame() {
     if (width >= Math.round((100/30)*a*10)/10){
       clearInterval(id);
-
-    }  else if(width > 100){
+    }  else if(width > 99){
       clearInterval(id);
       document.write("<img class=\"bsod\" src=\"bsod.jpg\" style=\"width:100%;height:100%;object-fit:cover;\">")
     } else {
       width++; 
       elem.style.width = width + '%'; 
       elem.innerHTML = width * 1  + '%';
+
     }
   }
 }
