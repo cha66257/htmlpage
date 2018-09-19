@@ -69,7 +69,7 @@
     <div style="height:150px"></div>
         <div class="fancy-button">
   <div class="left-frills frills"></div>
-  <input type="submit" name="" class="button" value="簽到">
+  <input type="submit" name="" class="button" onClick="this.disabled=true;value='❤';this.form.submit();" value="簽到">
   <div class="right-frills frills"></div>
     </form><br/>
     <div style="height:100px"><div style="position: relative;top:20px;font-weight: 200;">網路位元組 | Designed by None</div></div>
@@ -86,7 +86,7 @@
   $(".fancy-button").mousedown(function(){
     $(this).bind('animationend webkitAnimationEnd MSAnimationEnd oAnimationEnd', function(){
         $(this).removeClass('active');
-        document.getElementsByClassName("button")[0].disabled=true;
+        // document.getElementsByClassName("button")[0].disabled=true;
     })
      $(this).addClass("active");
   });
